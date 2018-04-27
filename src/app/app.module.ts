@@ -1,9 +1,11 @@
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 
 import { AppComponent } from './app.component';
@@ -21,6 +23,7 @@ import { ShoppingCartComponent } from './restaurants/restaurant/restaurant-detai
 import { MenuItemComponent } from './restaurants/restaurant/restaurant-detail/menu-item/menu-item.component';
 import { ReviewsComponent } from './restaurants/restaurant/restaurant-detail/reviews/reviews.component';
 
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -41,7 +44,7 @@ import { ReviewsComponent } from './restaurants/restaurant/restaurant-detail/rev
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [RestaurantService, ShoppingCartService],
+  providers: [RestaurantService, ShoppingCartService, {provide: LOCALE_ID, useValue: 'pt'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
