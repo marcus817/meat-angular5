@@ -22,6 +22,12 @@ export class ShoppingCartService {
   removeItem(item: CartItem) {
     this.items.splice(this.items.indexOf(item), 1)
   }
+
+  quantidade() {
+    return this.items
+      .map(item => item.quantity)
+      .reduce((prev, quantity) => prev + quantity, 0)
+  }
   total(): number {
     return this.items
       .map(item => item.value())

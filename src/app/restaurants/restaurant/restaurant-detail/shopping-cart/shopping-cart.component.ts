@@ -30,6 +30,10 @@ export class ShoppingCartComponent implements OnInit {
     this.shoppingCartService.removeItem(item);
   }
 
+  qtdItem(): number {
+    return this.shoppingCartService.quantidade()
+  }
+
   total(): number {
     return this.shoppingCartService.total()
   }
